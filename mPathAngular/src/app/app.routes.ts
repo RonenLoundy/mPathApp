@@ -10,12 +10,12 @@ export const routes: Routes = [
         component: HomeComponent,
     },
     {
-        path: '/login',
+        path: 'login',
         title: 'Login Page',
         component: LoginComponent,
     },
     {
-        path: '/recommendation',
+        path: 'recommendation',
         title: 'Recommendation Page',
         component: RecommendationComponent,
     },
