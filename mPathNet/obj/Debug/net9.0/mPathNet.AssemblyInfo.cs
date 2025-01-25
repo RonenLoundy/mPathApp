@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("mPathNet")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2b5913be3563fa987c9597649803203014392655")]
 [assembly: System.Reflection.AssemblyProductAttribute("mPathNet")]
 [assembly: System.Reflection.AssemblyTitleAttribute("mPathNet")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
