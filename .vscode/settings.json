@@ -1,0 +1,9 @@
+{
+    "dotnet.defaultSolution": "mPAth.sln",
+    "dataworkspace.excludedProjects": [
+        "mPAthDatabase/mPAthDatabase.sqlproj"
+    ],
+    "files.watcherExclude": {
+        "**/target": true
+    }
+}

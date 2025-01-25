@@ -1,0 +1,11 @@
+f:\Documents\Programs\Application Projects\mPath\mPathDatabase\bin\Debug\mPathDatabase.dacpac
+f:\Documents\Programs\Application Projects\mPath\mPathDatabase\bin\Debug\mPathDatabase.dll
+f:\Documents\Programs\Application Projects\mPath\mPathDatabase\bin\Debug\mPathDatabase.pdb
+f:\Documents\Programs\Application Projects\mPath\mPathDatabase\obj\Debug\mPathDatabase.sqlproj.AssemblyReference.cache
+f:\Documents\Programs\Application Projects\mPath\mPathDatabase\obj\Debug\mPathDatabase.GeneratedMSBuildEditorConfig.editorconfig
+f:\Documents\Programs\Application Projects\mPath\mPathDatabase\obj\Debug\Model.xml
+f:\Documents\Programs\Application Projects\mPath\mPathDatabase\obj\Debug\refactor.xml
+f:\Documents\Programs\Application Projects\mPath\mPathDatabase\obj\Debug\postdeploy.sql
+f:\Documents\Programs\Application Projects\mPath\mPathDatabase\obj\Debug\predeploy.sql
+f:\Documents\Programs\Application Projects\mPath\mPathDatabase\obj\Debug\mPathDatabase.dll
+f:\Documents\Programs\Application Projects\mPath\mPathDatabase\obj\Debug\mPathDatabase.pdb

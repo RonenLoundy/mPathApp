@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mPAth", "mPAth\mPAth.csproj", "{60F710F1-809B-464D-AFC5-BDDE5B7FAAA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mPathNet", "mPathNet\mPathNet.csproj", "{CF92AEDF-5682-4F85-8357-9799BD249FF3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60F710F1-809B-464D-AFC5-BDDE5B7FAAA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60F710F1-809B-464D-AFC5-BDDE5B7FAAA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60F710F1-809B-464D-AFC5-BDDE5B7FAAA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60F710F1-809B-464D-AFC5-BDDE5B7FAAA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF92AEDF-5682-4F85-8357-9799BD249FF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF92AEDF-5682-4F85-8357-9799BD249FF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF92AEDF-5682-4F85-8357-9799BD249FF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF92AEDF-5682-4F85-8357-9799BD249FF3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
