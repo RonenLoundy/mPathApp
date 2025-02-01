@@ -20,39 +20,41 @@ export class PatientsComponent implements OnInit {
   isAuthorized: boolean = false;
 
   constructor(private patientsService: PatientsService, private authService: AuthService, private router: Router) { }
-
+  // On initial load check if authorized if you are get patients
   ngOnInit(): void {
     this.checkAuthorization();
     if (this.isAuthorized) {
       this.fetchPatients();
     }
   }
-
+  // Check Authorization
   checkAuthorization(): void {
-    const userRole = this.authService.getUserRole(); // Make sure this returns 'Provider'
+    const userRole = this.authService.getUserRole();
     this.isAuthorized = userRole === 'Provider';
     if (!this.isAuthorized) {
-      alert("Access Denied: Only HealthCare Professionals can view this page.");
-      this.router.navigate(['/']); // Redirect to home or login
+      if (typeof window !== 'undefined') {
+        alert("Access Denied: Only HealthCare Professionals can view this page.");
+      }
+      this.router.navigate(['/']);
     }
   }
-
+  // Get Patients from Database
   fetchPatients(): void {
     this.patientsService.getPatients(this.searchQuery, this.page, this.pageSize).subscribe(response => {
       this.patients = response.patients;
       this.totalPatients = response.totalCount;
     });
   }
-
+  // Search the Database for specific patients
   onSearch(): void {
     this.page = 1;
     this.fetchPatients();
   }
-
+  // Send to specific patient detail page
   goToDetails(patientId: string): void {
     this.router.navigate(['/patients', patientId]);
   }
-
+  // Advance pagination
   changePage(newPage: number): void {
     this.page = newPage;
     this.fetchPatients();

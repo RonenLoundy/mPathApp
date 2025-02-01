@@ -17,21 +17,22 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
 
   constructor(private authService: AuthService, private router: Router) { }
+  // On load check if logged in
   ngOnInit(): void {
     this.checkLoginStatus();
   }
 
-  // Check if the user is already logged in
+  // Check if the user is already logged in if so send to patients page
   checkLoginStatus(): void {
     const token = this.authService.getToken();
     if (token) {
       this.isLoggedIn = true;
-      // Optionally, redirect to the dashboard or homepage
       this.router.navigate(['/patients']);
     } else {
       this.isLoggedIn = false;
     }
   }
+  // On login button send info to backend through service to check if information is correct
   onLogin(): void {
     this.authService.login(this.username, this.password).subscribe({
       next: (response) => {

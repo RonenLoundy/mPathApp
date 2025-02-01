@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("mPathLoginService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+29c6e31b265e0f2eaca6d6a13e6c874467606d28")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b5f58a7676d4937a811aabaf43f1d428919d99af")]
 [assembly: System.Reflection.AssemblyProductAttribute("mPathLoginService")]
 [assembly: System.Reflection.AssemblyTitleAttribute("mPathLoginService")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

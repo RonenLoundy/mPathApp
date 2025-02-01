@@ -20,11 +20,12 @@ export class RegisterComponent {
   successMessage: string = '';
 
   constructor(private authService: AuthService, private router: Router) { }
-
+  // On register button
   onRegister(): void {
+    // Use the service to send info to the backend
     this.authService.register(this.username, this.password).subscribe({
       next: (response) => {
-        alert(response.message);  // Use the message returned from the backend
+        alert(response.message);
         this.router.navigate(['/login']);
       },
       error: () => {

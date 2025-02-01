@@ -1,16 +1,11 @@
 <div class="row justify-content-center align-items-center">
-    <div>
-        <div class="row">
+    <div class="registration-container">
+        <div>
             <h1 class="text-center">Register</h1>
             <form (ngSubmit)="onRegister()">
-                <div>
-                    <input [(ngModel)]="username" name="username" placeholder="Username" required />
+                <div><input [(ngModel)]="username" name="username" placeholder="Username" required /></div>
+                <div><input [(ngModel)]="password" name="password" type="password" placeholder="Password" required />
                 </div>
-
-                <div>
-                    <input [(ngModel)]="password" name="password" type="password" placeholder="Password" required />
-                </div>
-
                 <button type="submit">Register</button>
             </form>
         </div>

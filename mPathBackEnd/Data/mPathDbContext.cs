@@ -4,6 +4,7 @@ namespace mPathLoginService.Data
 {
     public class mPathDbContext : DbContext
     {
+        // Create .net connections to databases based on models
         public DbSet<Users> Users { get; set; }
         public DbSet<Patients> Patients { get; set; }
         public DbSet<PatientsToRecommendations> PatientsToRecommendations { get; set; }

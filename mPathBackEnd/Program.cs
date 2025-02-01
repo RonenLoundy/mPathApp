@@ -5,28 +5,27 @@ using mPathLoginService.Data;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+//Get the environmental variable for Angular Hosting
+var allowedOrigin = builder.Configuration["Cors:AllowedOrigin"]
+                    ?? Environment.GetEnvironmentVariable("AllowedOrigin")
+                    ?? "http://localhost:4200"; // Fallback default value
+// Allow Angular to connect to Backend
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngularApp",
-        builder => builder.WithOrigins("http://localhost:4200") // Allow requests from Angular app
-                          .AllowAnyMethod()                  // Allow any HTTP method (GET, POST, etc.)
-                          .AllowAnyHeader());                // Allow any HTTP headers
+        builder => builder.WithOrigins(allowedOrigin)
+                          .AllowAnyMethod()
+                          .AllowAnyHeader());
 });
+//Check App Settings for Environmental Runtime Variables
 builder.Configuration
     .SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
     .AddEnvironmentVariables();
-
-try
-{
-#pragma warning disable CS8604 // Possible null reference argument.
-    var nullCatch = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:SecretKey"]));
-#pragma warning restore CS8604 // Possible null reference argument.
-}
-catch (NullReferenceException e)
-{
-    throw new NullReferenceException("Secret Key is Null", e);
-}
+Console.WriteLine($"Config Loaded: {File.Exists("appsettings.json")}");
+Console.WriteLine($"JWT Secret Key (Raw): {builder.Configuration["Jwt:SecretKey"]}");
+var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"]);
+// Add JWT authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 .AddJwtBearer(options =>
 {
@@ -37,9 +36,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         ValidateAudience = true,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        ValidIssuer = builder.Configuration["JwtSettings:Issuer"],
-        ValidAudience = builder.Configuration["JwtSettings:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:SecretKey"])),
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"])),
         RequireSignedTokens = true,
         RoleClaimType = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
 
@@ -60,18 +59,24 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 #pragma warning restore CS8604 // Possible null reference argument.
 });
+
+// Add database Connections
 builder.Services.AddDbContext<mPathDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
+// Add Controller Software
 builder.Services.AddControllers();
+
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
+
+// Add Testing Logging
 builder.Services.AddLogging(options =>
 {
     options.AddConsole();
     options.AddDebug();
 });
 
+//Build The Backend
 var app = builder.Build();
 
 app.UseCors("AllowAngularApp");

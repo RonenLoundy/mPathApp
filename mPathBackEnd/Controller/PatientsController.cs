@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 [Route("api/[controller]")]
 [ApiController]
-//[Authorize] // Ensures authentication
 public class PatientsController : ControllerBase
 {
     private readonly mPathDbContext _context;
@@ -18,9 +17,7 @@ public class PatientsController : ControllerBase
         _context = context;
     }
 
-    // GET: api/patients?search=John&page=1&pageSize=10
     [HttpGet]
-    //[Authorize(Roles = "Provider")] // Restricts to Provider users
     public async Task<IActionResult> GetPatients([FromQuery] string? search, [FromQuery] int page = 1, [FromQuery] int pageSize = 10)
     {
         if (page < 1 || pageSize < 1) return BadRequest("Invalid pagination parameters.");
@@ -36,7 +33,7 @@ public class PatientsController : ControllerBase
         // Get paginated result
         var totalPatients = await query.CountAsync();
         var patients = await query.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
-
+        // Send information to front end
         return Ok(new
         {
             TotalCount = totalPatients,
@@ -46,27 +43,26 @@ public class PatientsController : ControllerBase
         });
     }
     [HttpGet("{id}")]
-    //[Authorize(Roles = "Provider")]
     public async Task<IActionResult> GetPatientById(int id)
     {
         var patient = await _context.Patients
             .Include(p => p.PatientToRecommendations) // Include the related Recommendations
             .ThenInclude(ptr => ptr.Recommendation) // Include the actual Recommendation object
             .FirstOrDefaultAsync(p => p.PatientId == id);
-
+        // Check if no Patient was found
         if (patient == null)
         {
             return NotFound("Patient not found.");
         }
-
-        // Map recommendations with 'Completion' status
+        // Get the recommendations that apply to said patient
         var recommendations = patient.PatientToRecommendations
             .Select(ptr => new
             {
                 ptr.Recommendation.Recommendation,
-                ptr.RecommendationStatus // Use 'Completion' here instead of 'RecommendationStatus'
-            }).ToList();
-
+                ptr.RecommendationStatus
+            }
+            );
+        // Send Patient info to front end
         return Ok(new
         {
             patient.PatientId,
@@ -79,6 +75,7 @@ public class PatientsController : ControllerBase
     [HttpPut("patients/{patientId}/recommendations")]
     public async Task<IActionResult> MarkRecommendationAsComplete(int patientId, [FromBody] RecommendationUpdateModel model)
     {
+        // Receive the Patient info from front end
         var patient = await _context.Patients
             .Include(p => p.PatientToRecommendations)
             .ThenInclude(ptr => ptr.Recommendation)
@@ -88,7 +85,7 @@ public class PatientsController : ControllerBase
         {
             return NotFound("Patient not found.");
         }
-
+        // Find the recommendation to update
         var patientRecommendation = patient.PatientToRecommendations
             .FirstOrDefault(ptr => ptr.Recommendation.Recommendation == model.Recommendation);
 

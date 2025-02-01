@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   isLoggedIn = false;
 
   constructor(private authService: AuthService, private router: Router) { }
-
+  // Check if Logged in on load
   ngOnInit(): void {
     this.checkLoginStatus();
   }
@@ -31,4 +31,6 @@ export class AppComponent implements OnInit {
     this.isLoggedIn = false;  // Update the status
     this.router.navigate(['/login']);  // Redirect to login page
   }
+
+
 }

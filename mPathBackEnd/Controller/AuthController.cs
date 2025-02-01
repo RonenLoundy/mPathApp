@@ -30,11 +30,12 @@ public class AuthController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegistrationModel model)
     {
+        // Check if the username is in use
         if (_context.Users.Any(u => u.Username == model.Username))
         {
             return BadRequest("Username is already taken.");
         }
-
+        //create the User to save in the database
         var user = new Users
         {
             Username = model.Username,
@@ -42,6 +43,7 @@ public class AuthController : ControllerBase
             Authority = "Provider"
         };
         user.PasswordHash = _passwordHasher.HashPassword(user, model.Password);
+        //update database
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
 
@@ -56,6 +58,7 @@ public class AuthController : ControllerBase
     public IActionResult Login([FromBody] LoginModel login)
     {
         var user = _context.Users.FirstOrDefault(u => u.Username == login.Username);
+        //check username and password
         if (user == null || !VerifyPassword(user, login.Password))
         {
             return Unauthorized("Invalid username or password.");
@@ -80,12 +83,16 @@ public class AuthController : ControllerBase
     /// </summary>
     private string GenerateJwtToken(string username)
     {
+        //Get Security Key
         var securityKey = _config["Jwt:SecretKey"];
+        //catch null security keys
         if (string.IsNullOrEmpty(securityKey))
         {
             throw new Exception("Null Security Key");
         }
+        //get user
         var user = _context.Users.FirstOrDefault(u => u.Username == username) ?? throw new Exception("User not found.");
+        //create personal key
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(securityKey));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
@@ -93,10 +100,10 @@ public class AuthController : ControllerBase
         {
             new Claim(JwtRegisteredClaimNames.Sub, username),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim(ClaimTypes.Role, user.Authority) // Ensure Authority is properly used
+            new Claim(ClaimTypes.Role, user.Authority)
         };
 
-
+        //Create the JWT
         var token = new JwtSecurityToken(
             issuer: _config["JwtSettings:Issuer"],
             audience: _config["JwtSettings:Audience"],

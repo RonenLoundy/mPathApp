@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "pz2u3C30KEY8ztzCpa1CA2uJMLYitgjcgflTQfdVUeI=",
-  "Source": "mPathLoginService",
-  "BasePath": "_content/mPathLoginService",
+  "Hash": "zxZ9MdOh1szgflfCR8qOyFF2vRKbatH2n+w4MyllEoE=",
+  "Source": "mPathBackend",
+  "BasePath": "_content/mPathBackend",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
