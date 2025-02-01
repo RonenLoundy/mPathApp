@@ -1,0 +1,38 @@
+<div *ngIf="patient; else loading">
+    <h2>Patient Details</h2>
+
+    <div *ngIf="errorMessage" class="error">
+        {{ errorMessage }}
+    </div>
+
+    <div>
+        <p><strong>ID:</strong> {{ patient.patientId }}</p>
+        <p><strong>Name:</strong> {{ patient.fullName }}</p>
+        <p><strong>First Name:</strong> {{ patient.firstName }}</p>
+        <p><strong>Last Name:</strong> {{ patient.lastName }}</p>
+
+        <h3>Recommendations</h3>
+        <ul>
+            <li *ngFor="let recommendation of recommendations">
+                <strong>{{ recommendation.recommendation }}</strong>
+                - Status:
+                <span [ngClass]="{
+            'incomplete': recommendation.recommendationStatus === 'Incomplete',
+            'completed': recommendation.recommendationStatus === 'Completed'
+          }">
+                    {{ recommendation.recommendationStatus }}
+                </span>
+                <button *ngIf="recommendation.recommendationStatus === 'Incomplete'"
+                    (click)="markRecommendationComplete(recommendation)">
+                    Mark as Complete
+                </button>
+            </li>
+        </ul>
+    </div>
+
+    <button (click)="goBack()">Back to Patients</button>
+</div>
+
+<ng-template #loading>
+    <p>Loading...</p>
+</ng-template>

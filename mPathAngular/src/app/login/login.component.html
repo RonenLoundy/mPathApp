@@ -1,26 +1,15 @@
-<div>
-    <div>
-        <h2>Login</h2>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-4">
-            <!-- Email Input -->
-            <div>
-                <label for="email">Email</label>
-                <input id="email" type="email" formControlName="email" />
-
-            </div>
-
-            <!-- Password Input -->
-            <div>
-                <label for="password">Password</label>
-                <input id="password" type="password" formControlName="password" />
-            </div>
-
-            <!-- Submit Button -->
-            <div>
-                <button type="submit" [disabled]="loginForm.invalid">
-                    Login
-                </button>
-            </div>
-        </form>
+<div class="row justify-content-center align-items-center">
+    <div class=".bg-dark">
+        <div class="row">
+            <h1 class="text-center">Login</h1>
+            <form (ngSubmit)="onLogin()">
+                <input [(ngModel)]="username" name="username" placeholder="Username" required />
+                <input [(ngModel)]="password" name="password" type="password" placeholder="Password" required />
+                <button type="submit">Login</button>
+            </form>
+            <p>
+                <a class="nav-link" routerLink="/register">No Account? Register Here</a>
+                <router-outlet />
+            </p>
+        </div>
     </div>
-</div>

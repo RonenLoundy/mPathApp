@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "pz2u3C30KEY8ztzCpa1CA2uJMLYitgjcgflTQfdVUeI=",
+  "Source": "mPathLoginService",
+  "BasePath": "_content/mPathLoginService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

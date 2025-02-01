@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mPAth", "mPAth\mPAth.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mPathNet", "mPathNet\mPathNet.csproj", "{CF92AEDF-5682-4F85-8357-9799BD249FF3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mPathBackend", "mPathBackend\mPathBackend.csproj", "{F88525DF-5171-4495-AC91-19669D091AD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mPathLoginService", "mPathLoginService\mPathLoginService.csproj", "{A2ED27F9-778A-4471-AB21-BE1E86CB9882}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{CF92AEDF-5682-4F85-8357-9799BD249FF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF92AEDF-5682-4F85-8357-9799BD249FF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF92AEDF-5682-4F85-8357-9799BD249FF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F88525DF-5171-4495-AC91-19669D091AD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F88525DF-5171-4495-AC91-19669D091AD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F88525DF-5171-4495-AC91-19669D091AD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F88525DF-5171-4495-AC91-19669D091AD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2ED27F9-778A-4471-AB21-BE1E86CB9882}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2ED27F9-778A-4471-AB21-BE1E86CB9882}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2ED27F9-778A-4471-AB21-BE1E86CB9882}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2ED27F9-778A-4471-AB21-BE1E86CB9882}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
