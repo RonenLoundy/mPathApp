@@ -22,8 +22,7 @@ builder.Configuration
     .SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
     .AddEnvironmentVariables();
-Console.WriteLine($"Config Loaded: {File.Exists("appsettings.json")}");
-Console.WriteLine($"JWT Secret Key (Raw): {builder.Configuration["Jwt:SecretKey"]}");
+
 var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"]);
 // Add JWT authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -66,7 +65,8 @@ builder.Services.AddDbContext<mPathDbContext>(options =>
 
 // Add Controller Software
 builder.Services.AddControllers();
-
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
 // Add Testing Logging
@@ -78,6 +78,14 @@ builder.Services.AddLogging(options =>
 
 //Build The Backend
 var app = builder.Build();
+
+
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "mPathBackendApi");
+}
+);
 
 app.UseCors("AllowAngularApp");
 app.UseAuthentication();

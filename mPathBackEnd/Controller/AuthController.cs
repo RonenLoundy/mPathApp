@@ -28,12 +28,14 @@ public class AuthController : ControllerBase
     /// Registers a new user with a hashed password.
     /// </summary>
     [HttpPost("register")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
     public async Task<IActionResult> Register([FromBody] RegistrationModel model)
     {
         // Check if the username is in use
         if (_context.Users.Any(u => u.Username == model.Username))
         {
-            return BadRequest("Username is already taken.");
+            return Conflict("Username is already taken.");
         }
         //create the User to save in the database
         var user = new Users
@@ -55,6 +57,8 @@ public class AuthController : ControllerBase
     /// Authenticates user and returns a JWT token.
     /// </summary>
     [HttpPost("login")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public IActionResult Login([FromBody] LoginModel login)
     {
         var user = _context.Users.FirstOrDefault(u => u.Username == login.Username);

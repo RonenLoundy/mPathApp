@@ -18,6 +18,7 @@ public class PatientsController : ControllerBase
     }
 
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetPatients([FromQuery] string? search, [FromQuery] int page = 1, [FromQuery] int pageSize = 10)
     {
         if (page < 1 || pageSize < 1) return BadRequest("Invalid pagination parameters.");
@@ -43,7 +44,10 @@ public class PatientsController : ControllerBase
         });
     }
     [HttpGet("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetPatientById(int id)
+
     {
         var patient = await _context.Patients
             .Include(p => p.PatientToRecommendations) // Include the related Recommendations
@@ -52,7 +56,7 @@ public class PatientsController : ControllerBase
         // Check if no Patient was found
         if (patient == null)
         {
-            return NotFound("Patient not found.");
+            return NotFound(new { message = "Patient not found" });
         }
         // Get the recommendations that apply to said patient
         var recommendations = patient.PatientToRecommendations
@@ -73,6 +77,8 @@ public class PatientsController : ControllerBase
         });
     }
     [HttpPut("patients/{patientId}/recommendations")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> MarkRecommendationAsComplete(int patientId, [FromBody] RecommendationUpdateModel model)
     {
         // Receive the Patient info from front end
@@ -83,7 +89,7 @@ public class PatientsController : ControllerBase
 
         if (patient == null)
         {
-            return NotFound("Patient not found.");
+            return NotFound(new { message = "Patient not found" });
         }
         // Find the recommendation to update
         var patientRecommendation = patient.PatientToRecommendations
@@ -91,7 +97,7 @@ public class PatientsController : ControllerBase
 
         if (patientRecommendation == null)
         {
-            return NotFound("Recommendation not found for this patient.");
+            return NotFound(new { message = "Recommendation not found for this patient." });
         }
 
         // Update the recommendation status

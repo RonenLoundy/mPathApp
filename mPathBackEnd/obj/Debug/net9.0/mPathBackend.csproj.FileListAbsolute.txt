@@ -33,6 +33,9 @@ F:\Documents\Programs\Application Projects\mPath\mPathBackend\bin\Debug\net9.0\M
 F:\Documents\Programs\Application Projects\mPath\mPathBackend\bin\Debug\net9.0\Microsoft.SqlServer.Server.dll
 F:\Documents\Programs\Application Projects\mPath\mPathBackend\bin\Debug\net9.0\Microsoft.Win32.SystemEvents.dll
 F:\Documents\Programs\Application Projects\mPath\mPathBackend\bin\Debug\net9.0\Mono.TextTemplating.dll
+F:\Documents\Programs\Application Projects\mPath\mPathBackend\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+F:\Documents\Programs\Application Projects\mPath\mPathBackend\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+F:\Documents\Programs\Application Projects\mPath\mPathBackend\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 F:\Documents\Programs\Application Projects\mPath\mPathBackend\bin\Debug\net9.0\System.CodeDom.dll
 F:\Documents\Programs\Application Projects\mPath\mPathBackend\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
 F:\Documents\Programs\Application Projects\mPath\mPathBackend\bin\Debug\net9.0\System.Drawing.Common.dll
