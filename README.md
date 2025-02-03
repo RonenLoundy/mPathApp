@@ -1,26 +1,26 @@
-SetUp Instructions
+SetUp Instructions<br />
 
-Database Setup:
-Enable SQL Server and Windows Authentication Mode in Security Properties
-Enable TCP/IP and Named Pipes
-Restart Server
-Run the Database Setup.sql SQL Script in your SQLServer
-Optionally Run the TestData.sql Script
+Database Setup:<br />
+Enable SQL Server and Windows Authentication Mode in Security Properties<br />
+Enable TCP/IP and Named Pipes<br />
+Restart Server<br />
+Run the Database Setup.sql SQL Script in your SQLServer<br />
+Optionally Run the TestData.sql Script<br />
 
-Backend Configuration:
-Download and Install .net 9
-In ./mPathBackEnd/appsettings.json there are 3 fields that can be customized
-Jwt is the JSON Web Token Settings, the Secret Key, Issuer and Audience Fields are customizable there
-ConnectionStrings is the variable that allows access to the Database, 
-    The Database, UserID, and Password are created in the Database SQL script.
-    The Server is wherever the Database is hosted, the default is localhost.
-Cors and more specially Allowed Origin is the Angular Connection
+Backend Configuration:<br />
+Download and Install .net 9<br />
+In ./mPathBackEnd/appsettings.json there are 3 fields that can be customized<br />
+Jwt is the JSON Web Token Settings, the Secret Key, Issuer and Audience Fields are customizable there<br />
+ConnectionStrings is the variable that allows access to the Database, <br />
+    The Database, UserID, and Password are created in the Database SQL script.<br />
+    The Server is wherever the Database is hosted, the default is localhost.<br />
+Cors and more specially Allowed Origin is the Angular Connection<br />
 
 
-Angular Configuration:
-Install node.js and Angular
-If you wish to change the Angular Hosting it is located at .\mPathAngular\src\server.ts
-In mPathAngular/src/environments/environment.ts change the ApiUrl to the whatever the base ApiURL is
-By default it is http://localhost:5249/
+Angular Configuration:<br />
+Install node.js and Angular<br />
+If you wish to change the Angular Hosting it is located at .\mPathAngular\src\server.ts<br />
+In mPathAngular/src/environments/environment.ts change the ApiUrl to the whatever the base ApiURL is<br />
+By default it is http://localhost:5249/<br />
 
-You can then run Build-and-Launch to start the program
+You can then run Build-and-Launch to start the program<br />
