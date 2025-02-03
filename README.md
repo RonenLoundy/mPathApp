@@ -13,8 +13,9 @@ In ./mPathBackEnd/appsettings.json there are 3 fields that can be customized<br 
 Jwt is the JSON Web Token Settings, the Secret Key, Issuer and Audience Fields are customizable there<br />
 ConnectionStrings is the variable that allows access to the Database, <br />
     The Database, UserID, and Password are created in the Database SQL script.<br />
-    The Server is wherever the Database is hosted, the default is http://localhost:5249/ <br />
+    The Server is wherever the Database is hosted, the default is localhost.
 Cors and more specially Allowed Origin is the Angular Connection<br />
+By default the backend is located at http://localhost:5249/ <br />
 
 
 Angular Configuration:<br />
