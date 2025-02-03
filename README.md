@@ -20,6 +20,7 @@ By default the backend is located at http://localhost:5249/ <br />
 
 Angular Configuration:<br />
 Install node.js and Angular<br />
+Run npm install in  .\mPathAngular
 If you wish to change the Angular Hosting it is located at .\mPathAngular\src\server.ts<br />
 In mPathAngular/src/environments/environment.ts change the ApiUrl to the whatever the base ApiURL is<br />
 By default is http://localhost:4200/ <br />
